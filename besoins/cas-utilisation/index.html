@@ -642,6 +642,42 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cu02-rechercher-un-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      CU02 - Rechercher un cours
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cu03-personnalisation-du-profil" class="md-nav__link">
+    <span class="md-ellipsis">
+      CU03 - Personnalisation du profil
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cu04-charge-de-travail-des-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      CU04 - Charge de travail des cours
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cu05-donnees-academiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      CU05 - Données académiques
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -959,6 +995,42 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cu02-rechercher-un-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      CU02 - Rechercher un cours
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cu03-personnalisation-du-profil" class="md-nav__link">
+    <span class="md-ellipsis">
+      CU03 - Personnalisation du profil
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cu04-charge-de-travail-des-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      CU04 - Charge de travail des cours
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cu05-donnees-academiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      CU05 - Données académiques
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1003,16 +1075,164 @@
 <td>Utilisateur</td>
 <td>L'utilisateur se connecte à l'application</td>
 </tr>
+<tr>
+<td>CU02</td>
+<td>Recherche de cours</td>
+<td>Étudiant</td>
+<td>L'étudiant peut effectuer une recherche de cours sur l'application</td>
+</tr>
+<tr>
+<td>CU03</td>
+<td>Personnalisation du profil</td>
+<td>Étudiant</td>
+<td>L'étudiant peut configurer ses préférences de cours pour obtenir des suggestions personnalisées</td>
+</tr>
+<tr>
+<td>CU04</td>
+<td>Charge de travail des cours</td>
+<td>Étudiant</td>
+<td>L'étudiant peut avoir une idée sur la charge de travail sur plusieurs cours comparés</td>
+</tr>
+<tr>
+<td>CU05</td>
+<td>Données académiques</td>
+<td>Étudiant</td>
+<td>L'étudiant a accès à ses résultats pour chaques cours complétés</td>
+</tr>
 </tbody>
 </table>
 <h2 id="detail">Détail<a class="headerlink" href="#detail" title="Permanent link">&para;</a></h2>
 <h3 id="cu01-connexion">CU01 - Connexion<a class="headerlink" href="#cu01-connexion" title="Permanent link">&para;</a></h3>
-<p><strong>Acteurs</strong> : Utilisateur (principal)
-<strong>Préconditions</strong> : 
-<strong>PostConditions</strong> :
-<strong>Déclencheur</strong> : <br />
-<strong>Dépendances</strong> : <br />
-<strong>But</strong> :</p>
+<p><strong>Acteurs</strong> : </p>
+<ul>
+<li>Utilisateur (principal)</li>
+</ul>
+<p><strong>Préconditions</strong> : </p>
+<ul>
+<li>L'étudiant possède un compte activé et valide  </li>
+<li>Le système d'authentification est adapté au compte de l'étudiant</li>
+</ul>
+<p><strong>PostConditions</strong> :</p>
+<ul>
+<li>Le système a pu vérifier l'authentification de l'étudiant et le redirige vers le menu principal</li>
+</ul>
+<p><strong>Déclencheur</strong> : </p>
+<ul>
+<li>L'étudiant a accès à la page de connexion pour saisir son identifiant et son mot de passe</li>
+</ul>
+<p><strong>Dépendances</strong> : </p>
+<ul>
+<li>Système d'authentification (Authentificator)</li>
+</ul>
+<p><strong>But</strong> :</p>
+<ul>
+<li>L'étudiant a accès à son compte avec ses données enregistrées et protégées</li>
+</ul>
+<h3 id="cu02-rechercher-un-cours">CU02 - Rechercher un cours<a class="headerlink" href="#cu02-rechercher-un-cours" title="Permanent link">&para;</a></h3>
+<p><strong>Acteurs</strong> :</p>
+<ul>
+<li>Étudiant</li>
+</ul>
+<p><strong>Préconditions</strong> :</p>
+<ul>
+<li>L'étudiant et connecté à son compte  </li>
+<li>La base de donnée sur les structures des programmes est synchronisée avec Planifium</li>
+</ul>
+<p><strong>PostConditions</strong> :</p>
+<ul>
+<li>Une liste de cours s'affiche selon les critères de recherche de l'étudiant</li>
+</ul>
+<p><strong>Déclencheur</strong> :</p>
+<ul>
+<li>L'étudiant écrit des mots-clés ou un titre de cours dans la barre de recherche sur l'application</li>
+</ul>
+<p><strong>Dépendances</strong> :</p>
+<ul>
+<li>API Planifium</li>
+</ul>
+<p><strong>But</strong> :</p>
+<ul>
+<li>L'étudiant peut découvrir une variété de cours qui correspondent à sa recherche</li>
+</ul>
+<h3 id="cu03-personnalisation-du-profil">CU03 - Personnalisation du profil<a class="headerlink" href="#cu03-personnalisation-du-profil" title="Permanent link">&para;</a></h3>
+<p><strong>Acteurs</strong> :</p>
+<ul>
+<li>Étudiant</li>
+</ul>
+<p><strong>Préconditions</strong> :</p>
+<ul>
+<li>L'étudiant est connecté à son compte avec toutes ses informations valides</li>
+</ul>
+<p><strong>PostConditions</strong> :</p>
+<ul>
+<li>Les préférences sur les choix de cours et des données personnelles sont spécifiés sur le profil de l'étudiant  </li>
+<li>Les préférences présents dans le compte sont utilisés pour filtrer les suggestions des programmes de cours donnés</li>
+</ul>
+<p><strong>Déclencheur</strong> :</p>
+<ul>
+<li>L'étudiant a accès à la section de 'Personnalisation du profil' dans son profil</li>
+</ul>
+<p><strong>Dépendances</strong> :</p>
+<ul>
+<li>Base de données personnelles des étudiants sauvegardée  </li>
+<li>Moteur de suggestions qui suit les critères du profil de l'étudiant</li>
+</ul>
+<p><strong>But</strong> :</p>
+<ul>
+<li>Améliorer la précision des suggestions de cours en tenant compte de son profil personnalisé de l'étudiant</li>
+</ul>
+<h3 id="cu04-charge-de-travail-des-cours">CU04 - Charge de travail des cours<a class="headerlink" href="#cu04-charge-de-travail-des-cours" title="Permanent link">&para;</a></h3>
+<p><strong>Acteurs</strong> :</p>
+<ul>
+<li>Étudiant</li>
+</ul>
+<p><strong>Préconditions</strong> :</p>
+<ul>
+<li>L'étudiant sélectionne au moins deux cours à comparer la charge de travaille</li>
+</ul>
+<p><strong>PostConditions</strong> :</p>
+<ul>
+<li>Les données des cours choisis s'affichent avec les données comparées</li>
+</ul>
+<p><strong>Déclencheur</strong> :</p>
+<ul>
+<li>L'étudiant se dirige dans l'onglet de 'Comparaison de cours' dans l'application et sélectionne les cours au choix</li>
+</ul>
+<p><strong>Dépendances</strong> :</p>
+<ul>
+<li>Données des cours sont synchronisées avec le Planifium  </li>
+<li>Les préférences de la charge de travail dans le profil de l'étudiant</li>
+</ul>
+<p><strong>But</strong> :</p>
+<ul>
+<li>Comparaison des cours pour aider l'étudiant à évaluer la charge de travail sur une combinaison de cours</li>
+</ul>
+<h3 id="cu05-donnees-academiques">CU05 - Données académiques<a class="headerlink" href="#cu05-donnees-academiques" title="Permanent link">&para;</a></h3>
+<p><strong>Acteurs</strong> :</p>
+<ul>
+<li>Étudiant</li>
+</ul>
+<p><strong>Préconditions</strong> :</p>
+<ul>
+<li>Le système sauvegarde les données agrégées des cours pris par l'étudiant</li>
+</ul>
+<p><strong>PostConditions</strong> :</p>
+<ul>
+<li>Les données s'affichent de façon détaillée et claire</li>
+</ul>
+<p><strong>Déclencheur</strong> :</p>
+<ul>
+<li>L'étudiant décide de consulter un cours dans l'application</li>
+</ul>
+<p><strong>Dépendances</strong> :</p>
+<ul>
+<li>Données des cours de l'étudiant sont sauvegardées et agrégées</li>
+</ul>
+<p><strong>But</strong> :</p>
+<ul>
+<li>L'étudiant peut consulter de manière structurée les données des cours sélectionnés</li>
+</ul>
+<p>???? maybe d'autres CU : Créer un compte, Transmettre des avis, Modérer les avis (avec discord?), Vérifier les règles d'admissibilité aux cours, Obtenir les détails d'un cours avec les reviews (5+ reviews)</p>
 
 
 
