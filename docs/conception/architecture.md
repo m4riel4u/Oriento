@@ -23,4 +23,7 @@ title: Conception - Architecture
 - Format des données : JSON, XML, etc.
 
 ## Diagramme d’architecture (Modèle C4)
-
+Niveau 1 : 
+![alt text](<Capture d’écran 2025-10-03 131537.png>)
+Niveau 2 : 
+![alt text](<Capture d’écran 2025-10-03 131505.png>)

@@ -10,14 +10,14 @@ title: Vue d'ensemble
     }
 </style>
 
-# Nom du projet
+# Plateforme d'aide aux choix de cours
 
 ## Équipe
 
-- **`M1`:** Membre 1 (matricule) #nom-utilisateur
-- **`M2`:** Membre 2 (matricule) #nom-utilisateur
-- **`M3`:** Membre 3 (matricule) #nom-utilisateur  
-- **`M4`:** Membre 4 (matricule) #nom-utilisateur
+- **`M1`:** Marie Laurence Pilon (20266715) #Marie Laurence
+- **`M2`:** Sarah Rajab (matricule) #nom-utilisateur
+- **`M3`:** Béatrice Phung (matricule) #nom-utilisateur  
+- **`M4`:** Sarah Cho (matricule) #nom-utilisateur
 
 ## Description du projet
 
@@ -25,16 +25,22 @@ title: Vue d'ensemble
 
 | Taches                        | Terminé le    | Statut      | Responsable  |
 |-------------------------------|---------------|-------------|--------------|
-| Ouverture de projet           | 12 septembre  | ✅ Terminé  | `M1`         |
-| Description du domaine        | 19 septembre  | 🔄 En cours | `M1` `M2`    |
-| Identification des acteurs    | 19 septembre  | 🔄 En cours | `M2` `M3`    |
-| Glossaire                     | 21 septembre  | ⏳ À venir  | `M3`         |
-| Exigences Fonct et Non-Fonct  | 26 septembre  | ⏳ À venir  | `M1` `M4`    |
-| Évaluation des risques        | 26 septembre  | ⏳ À venir  | `M2`         |
-| Personas                      | 29 septembre  | ⏳ À venir  | `M1`         |
-| Cas d'utilisation             | 3 octobre     | ⏳ À venir  | `M3`         |
-| Diagramme d'activités         | 6 octobre     | ⏳ À venir  | `M4`         |
-| Modèle C4                     | 6 octobre     | ⏳ À venir  | `M3`         |
-| Prototype fonctionnel (bonus) | 10 octobre    | ⏳ À venir  | `M4`         |
-| Rapport                       | 10 octobre    | ⏳ À venir  | `M1`         |
+| Ouverture de projet           | 12 septembre  | ✅ Terminé  | `M1` `M2` `M3` `M4`         |
+| Description du domaine:  Fonctionnement, acteurs, dépendances        | 19 septembre  | ✅ Terminé  | `M3`     |
+| Hypothèses: Hypothèses émises dans l'élaboration du projet | 19 septembre  | ✅ Terminé  | `M1` `M2` `M3`    |
+| Identification des acteurs    | 19 septembre  | ✅ Terminé  | `M1` `M2` `M3`    |
+| Glossaire                     | 21 septembre  | 👀 À modifier   | `M1`         |
+| Exigences Fonct               | 26 septembre  | 👀 À modifier  | `M1` `M2`    |
+| Exigences Non-Fonct           | 26 septembre  | ✅ Terminé  | `M1` `M2`    |
+| Évaluation des risques        | 26 septembre  | ✅ Terminé  | `M3`         |
+| Personas                      | 29 septembre  | ⏳ À faire  | `M1`         |
+| Diagramme cas d'utilisations           | 3 octobre     |:grimacing: À vérifier  | `M1`         |
+| Cas d'utilisation             | 3 octobre     | 👀 À modifier  | `M2`         |
+| Diagramme d'activités         | 6 octobre     | :grimacing: À vérifier  | `M1`         |
+| Descriptions flux principaux         | 6 octobre     | ⏳ À faire  | `M1`         |
+| Modèle C4                     | 6 octobre     | :grimacing: À vérifier  | `M1`         |
+| Besoins matériels             | 6 octobre     | ⏳ À faire | `M3`         |
+| Prototype fonctionnel (bonus) | 10 octobre    | ⏳ À venir  | `M`         |
+| Rapport                       | 10 octobre    | ⏳ À faire  | `M`         |
+| README: Brève description du projet, organisation du répertoire | 10 octobre    | ⏳ À venir  | `M3`         |
 
