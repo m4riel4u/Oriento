@@ -36,10 +36,26 @@ Ce projet vise à centraliser plusieurs sources d'information:
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-## Ressources utiles
+## Installation de l'application
 
-- Documentation officielle MkDocs
-- Thème Material for MkDocs
+Prérequis : 
+- Java 17+
+- Python 3.10+ (pour le Discord bot)
+- Maven 3+
+
+## Exécution de l'application
+
+- Lancer le backend avec `maven`
+  > mvn clean package
+  > java -jar target/Oriento.jar
+
+- Exécuter le bot
+  > python Oriento.py
+
+## Tester l'application
+
+- Tests effectués dans le répertoire src/test/
+  > mvn test?
 
 # Template de projet REST API avec Javalin - IFT2255
 
@@ -103,3 +119,4 @@ Ce template suit principalement le modèle MVC :
 - Centralisez les routes dans `config/Routes.java` pour simplifier l’ajout de nouveaux endpoints.
 - Ajoutez des **tests unitaires** pour chaque méthode de service.
 - Conservez un style de code uniforme (respect du standard Java).
+
