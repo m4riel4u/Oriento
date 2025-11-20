@@ -12,9 +12,9 @@ title: Analyse des besoins - Cas d'utilisation
 | ID | Nom | Acteurs principaux | Description |
 |----|-----|---------------------|-------------|
 | CU01 | Connexion | Utilisateur | L'utilisateur se connecte à la plateforme. |
-| CU02 | Recherche de cours | Utilisateur | L'étudiant peut effectuer une recherche de cours sur l'application. |
-| CU03 | Personnalisation du profil | Utilisateur | L'étudiant peut configurer ses préférences de cours pour obtenir des suggestions personnalisées. |
-| CU04 | Comparaison de cours | Utilisateur | L'étudiant peut comparer des cours pour estimer la charge total de travail d'une combinaison. |
+| CU02 | Recherche de cours | Utilisateur | L'utilisateur peut effectuer une recherche de cours sur l'application. |
+| CU03 | Personnalisation du profil | Utilisateur | L'utilisateur peut configurer ses préférences de cours pour obtenir des suggestions personnalisées. |
+| CU04 | Comparaison de cours | Utilisateur | L'utilisateur peut comparer des cours pour estimer la charge total de travail d'une combinaison. |
 | CU05 | Création d'un compte | Utilisateur | L'utilisateur peut se créer un compte s'il n'en a pas déjà un. |
 
 
@@ -28,16 +28,16 @@ title: Analyse des besoins - Cas d'utilisation
 
 **Préconditions** : 
 
-- L'étudiant possède un compte activé et valide.  
-- Le système d'authentification est adapté au compte de l'étudiant.
+- L'utilisateur possède un compte activé et valide.  
+- Le système d'authentification est adapté au compte de l'utilisateur.
 
 **PostConditions** :
 
-- Le système a pu vérifier l'authentification de l'étudiant et le redirige vers le menu principal.
+- Le système a pu vérifier l'authentification de l'utilisateur et le redirige vers le menu principal.
 
 **Déclencheur** : 
 
-- L'étudiant ouvre la page de connexion pour saisir son identifiant et son mot de passe.
+- L'utilisateur ouvre la page de connexion pour saisir son identifiant et son mot de passe.
 
 **Dépendances** : 
 
@@ -45,7 +45,7 @@ title: Analyse des besoins - Cas d'utilisation
 
 **But** :
 
-- L'étudiant se connecte à son compte avec ses données enregistrées et protégées.
+- L'utilisateur se connecte à son compte avec ses données enregistrées et protégées.
 
 ### CU02 - Rechercher un cours
 
@@ -55,16 +55,16 @@ title: Analyse des besoins - Cas d'utilisation
 
 **Préconditions** :
 
-- L'étudiant et connecté à son compte.  
+- L'utilisateur et connecté à son compte.  
 - La base de donnée sur les structures des programmes est synchronisée avec Planifium.
 
 **PostConditions** :
 
-- Une liste de cours s'affiche selon les critères de recherche de l'étudiant.
+- Une liste de cours s'affiche selon les critères de recherche de l'utilisateur.
 
 **Déclencheur** :
 
-- L'étudiant écrit des mots-clés ou un titre de cours dans la barre de recherche sur l'application.
+- L'utilisateur écrit des mots-clés ou un titre de cours dans la barre de recherche sur l'application.
 
 **Dépendances** :
 
@@ -72,7 +72,7 @@ title: Analyse des besoins - Cas d'utilisation
 
 **But** :
 
-- L'étudiant peut découvrir une variété de cours qui correspondent à sa recherche.
+- L'utilisateur peut découvrir une variété de cours qui correspondent à sa recherche.
 
 ### CU03 - Personnalisation du profil
 
@@ -82,25 +82,25 @@ title: Analyse des besoins - Cas d'utilisation
 
 **Préconditions** :
 
-- L'étudiant est connecté à son compte avec toutes ses informations valides.
+- L'utilisateur est connecté à son compte avec toutes ses informations valides.
 
 **PostConditions** :
 
-- Les préférences sur les choix de cours et des données personnelles sont spécifiés sur le profil de l'étudiant. 
+- Les préférences sur les choix de cours et des données personnelles sont spécifiés sur le profil de l'utilisateur. 
 - Les préférences présents dans le compte sont utilisés pour filtrer les suggestions des programmes de cours donnés.
 
 **Déclencheur** :
 
-- L'étudiant ouvre la section de 'Personnalisation du profil' dans son profil.
+- L'utilisateur ouvre la section de 'Personnalisation du profil' dans son profil.
 
 **Dépendances** :
 
-- Base de données personnelles des étudiants sauvegardée.
-- Moteur de suggestions qui suit les critères du profil de l'étudiant.
+- Base de données personnelles des utilisateur sauvegardée.
+- Moteur de suggestions qui suit les critères du profil de l'utilisateur.
 
 **But** :
 
-- Améliorer la précision des suggestions de cours en tenant compte de son profil personnalisé de l'étudiant
+- Améliorer la précision des suggestions de cours en tenant compte de son profil personnalisé de l'utilisateur
 
 ### CU04 - Comparaison de cours
 
@@ -110,7 +110,7 @@ title: Analyse des besoins - Cas d'utilisation
 
 **Préconditions** :
 
-- L'étudiant sélectionne au moins deux cours à comparer la charge de travail.
+- L'utilisateur sélectionne au moins deux cours à comparer la charge de travail.
 
 **PostConditions** :
 
@@ -118,16 +118,16 @@ title: Analyse des besoins - Cas d'utilisation
 
 **Déclencheur** :
 
-- L'étudiant se dirige dans l'onglet de 'Comparaison de cours' dans l'application et sélectionne les cours au choix.
+- L'utilisateur se dirige dans l'onglet de 'Comparaison de cours' dans l'application et sélectionne les cours au choix.
 
 **Dépendances** :
 
 - Données des cours sont synchronisées avec le Planifium.
-- Les préférences de la charge de travail dans le profil de l'étudiant.
+- Les préférences de la charge de travail dans le profil de l'utilisateur.
 
 **But** :
 
-- Comparaison des cours pour aider l'étudiant à évaluer la charge de travail sur une combinaison de cours.
+- Comparaison des cours pour aider l'utilisateur à évaluer la charge de travail sur une combinaison de cours.
 
 
 ### CU05 - Création d'un compte
@@ -146,7 +146,7 @@ title: Analyse des besoins - Cas d'utilisation
 
 **Déclencheur** :
 
-- L'étudiant ouvre la page de création d'un compte pour créer son profil.
+- L'utilisateur ouvre la page de création d'un compte pour créer son profil.
 
 **Dépendances** :
 
