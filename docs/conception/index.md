@@ -8,8 +8,12 @@ Cette section présente les grandes lignes de l’architecture et des choix de c
 
 ## Approche utilisée
 
-- Architecture choisie (ex. : MVC, client-serveur, microservices, etc.)
-- Découpage en modules ou couches
+- L'architecture client-server selon le modèle MVC (Modèle-Vue-Contrôleur) sera utilisé.
+- Couches:
+    - Présentation (UI)
+    - Logique métier
+    - Base de données
+
 
 ## Contraintes prises en compte
 
