@@ -75,4 +75,10 @@ public class CourseController {
 
         return queryParams;
     }
+    public void getCoursesByQuery (Context ctx){
+        String query = ctx.queryParam("query");
+        List<Course> results = service.searchCourses(query);
+        ctx.json(results);
+
+    }
 }
