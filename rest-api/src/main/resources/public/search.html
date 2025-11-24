@@ -11,7 +11,7 @@
     <input type="text" id="searchQueryInput" placeholder="Ex: informatique">
     <button onclick="searchCourseByQuery()">Chercher</button>
     
-    <h3>Chercher un cours par sigle</h3>
+    <h3>Chercher un cours par sigle pour avoir plus de détails sur un cours particulier </h3>
     <input type="text" id="searchIdInput" placeholder="Ex: IFT2255 ou IFT">
     <button onclick="searchCourseById()">Chercher</button>
     
@@ -41,27 +41,44 @@
                     `).join("");
                 });
         }
-        function searchCourseById(){
+        function searchCourseById() {
             const query = document.getElementById("searchIdInput").value.trim().toUpperCase();
             const resultDiv = document.getElementById("resultDiv");
 
-            fetch(`/courses/search`)
-                .then(res => res.json())
-                .then(courses => {
-                    const filtered = courses.filter(cours => cours.id.toUpperCase().startsWith(query));
-                    if (filtered.length === 0){
-                        resultDiv.textContent = "Aucun cours trouvé pour ce sigle.";
-                        return;
-                    }
-                    resultDiv.innerHTML = filtered.map(cours => `
-                    <div>
-                        <strong>ID :</strong> ${cours.id} <br>
-                            <strong>Titre :</strong> ${cours.name} <br>
-                            <strong>Description :</strong> ${cours.description} <br>
-                            <hr>
+
+            fetch(`/courses/complete/${query}`)
+                .then(res => {
+                    if (!res.ok) throw new Error("Cours introuvable");
+                    return res.json();
+                })
+                .then(cours => {
+                    resultDiv.innerHTML = `
+                        <div>
+                            <strong>ID :</strong> ${cours.id}<br>
+                            <strong>Titre :</strong> ${cours.name}<br>
+                            <strong>Description :</strong> ${cours.description}<br>
+                            <strong>Crédits :</strong> ${cours.credits}<br>
+                            <strong>Horaire :</strong><br>
+                            ${cours.schedules?.map(s => `${s.day} ${s.start_time}-${s.end_time} 
+                            (${s.room})`).join("<br>") || "Aucun horaire disponible"}<br>
+                            <strong>Prérequis :</strong> ${cours.prerequisite_courses?.join(", ") || "Aucun"}<br>
+                            <strong>Trimestre offert :</strong> 
+                            ${Object.keys(cours.available_terms)
+                                .filter(k => cours.available_terms[k])
+                                .join(", ") || "N/D"}<br>
+                            <strong>Période offerte :</strong> 
+                            ${Object.keys(cours.available_periods)
+                                .filter(k => cours.available_periods[k])
+                                .join(", ") || "N/D"}<br>
+                            <strong> Cours équivalents : </strong>${cours.equivalent_courses?.join(", ") || "Aucun"}<br>
+                            <strong> Cours concomitants : </strong>${cours.concomitant_courses?.join(", ") || "Aucun"}<br>
+                            <strong> 
                         </div>
-                    `).join("");
-                });  
+                    `;
+                })
+                .catch(err => {
+                    resultDiv.textContent = "Aucun cours trouvé pour ce sigle.";
+                });
         }
     </script>
 </body>

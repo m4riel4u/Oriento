@@ -57,4 +57,19 @@ public class CourseService {
         }
         return filteredCourses;
     }
+    /**Fetch course details */
+    public Optional<Course> getCompleteCourse(String CourseId){
+        Map<String, String> params = Map.of("complete", "true");
+        URI uri = HttpClientApi.buildUri("https://planifium-api.onrender.com/api/v1/courses/" + CourseId, params);
+        System.out.println("➡️ [Service] Appel API : " + uri);
+        try{
+            Course course = clientApi.get(uri, Course.class);
+           System.out.println("✔️ [Service] JSON reçu et mappé en Course.");
+            return Optional.of(course);
+        }catch (RuntimeException e){
+           System.out.println("❌ [Service] Erreur lors du mapping JSON : " + e.getMessage());
+            return Optional.empty();
+        }
+        
+    }
 }

@@ -34,6 +34,7 @@ public class Routes {
         app.get("/courses", courseController::getAllCourses);
         app.get("/courses/search", courseController::getCoursesByQuery);
         app.get("/courses/{id}", courseController::getCourseById);
+        app.get("/courses/complete/{id}", courseController::getCompleteCourse);
         
     }
 
