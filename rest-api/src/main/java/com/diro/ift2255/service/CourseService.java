@@ -1,6 +1,7 @@
 package com.diro.ift2255.service;
 
 import com.diro.ift2255.model.Course;
+import com.diro.ift2255.model.Schedule;
 import com.diro.ift2255.util.HttpClientApi;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.net.URI;
@@ -59,15 +60,75 @@ public class CourseService {
     }
     /**Fetch course details */
     public Optional<Course> getCompleteCourse(String CourseId){
-        Map<String, String> params = Map.of("complete", "true");
+        Map<String, String> params = Map.of("complete", "true", "include_schedule", "true");
         URI uri = HttpClientApi.buildUri("https://planifium-api.onrender.com/api/v1/courses/" + CourseId, params);
-        System.out.println("➡️ [Service] Appel API : " + uri);
+
         try{
             Course course = clientApi.get(uri, Course.class);
             return Optional.of(course);
+
         }catch (RuntimeException e){
             return Optional.empty();
         }
         
     }
+    //Méthode pour formater toutes les info données avec les horaires 
+    public List<Map<String,Object>> rebuild(Course course) {
+        List<Map<String,Object>> out = new ArrayList<>();
+        // Organisation des données : schedules -> sections -> teachers, volets -> activities
+        // Plusieurs schedules avec plusieurs sections internes avec plusieurs volets internes avec plusieurs activities
+        for (Schedule sem : course.getSchedules()) {
+            //Récupérer les infos des différentes schedules
+            for (Schedule.Section sec : sem.sections) {
+                //Faire une Linked Hash Map pour avoir toutes les infos donnée dans les sections
+                Map<String,Object> h = new LinkedHashMap<>();
+                h.put("section", sec.name);
+                h.put("teachers", sec.teachers);
+                h.put("semester", sem.semester);
+
+                List<String> horaires = new ArrayList<>();
+                String intra = null;
+                String finale = null;
+                //Récupérer infos dans les volets (cours théoriques, pratiques, intra et final)
+                for (Schedule.Volet v : sec.volets) {
+                    //Récupérer les dates/horaires des exams
+                    if (v.name.equals("Intra")) {
+                        intra = formatExam(v);
+                    } else if (v.name.equals("Final")) {
+                        finale = formatExam(v);
+                    } else { // TH / TP
+                        //Formatage des horaires
+                        for (Schedule.Activity a : v.activities) {
+                            horaires.add(
+                                String.join(",", a.days)
+                                + " " + a.start_time + "-" + a.end_time
+                                + " (" + a.room + ")"
+                            );
+                        }
+                    }
+                }
+
+                h.put("horaire", horaires);
+                h.put("intra", intra);
+                h.put("final", finale);
+
+                out.add(h);
+            }
+        }
+        return out;
+    }
+    //méthode privé pour formater les exams
+    private String formatExam(Schedule.Volet volet) {
+        if (volet.activities == null || volet.activities.isEmpty()) {
+            return "Non spécifié";
+        }
+
+        Schedule.Activity act = volet.activities.get(0);
+
+        return String.join(",", act.days)
+                + " " + act.start_time + "-" + act.end_time
+                + " (" + (act.room != null ? act.room : "??") + ")";
+    }
+
+
 }

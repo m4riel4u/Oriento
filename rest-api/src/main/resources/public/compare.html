@@ -111,8 +111,14 @@
                 document.getElementById("course1Desc").textContent = data.description;
                 document.getElementById("course1ID").textContent = data.id;
                  // Horaire
-                    const scheduleText = data.schedules.map(s => `${s.day} ${s.start}-${s.end}`).join(", ");
-                    document.getElementById("course1Schedule").textContent = scheduleText || "—";
+                    const scheduleText1 = data.schedules.map(s => `
+                        Section ${s.section}<br>
+                        Enseignant : ${s.teachers.join(", ")}<br>
+                        Horaire :<br>${s.horaire.join("<br>")}<br>
+                        Intra : ${s.intra || "N/A"}<br>
+                        Final : ${s.final || "N/A"}
+                    `).join("<hr>");
+                    document.getElementById("course1Schedule").innerHTML = scheduleText1 || "—";
 
                     // Prérequis
                     const prereqText = data.prerequisite_courses.length > 0 
@@ -162,8 +168,14 @@
                 document.getElementById("course2Desc").textContent = data.description;
                 document.getElementById("course2ID").textContent = data.id; 
                 // Horaire
-                    const scheduleText = data.schedules.map(s => `${s.day} ${s.start}-${s.end}`).join(", ");
-                    document.getElementById("course2Schedule").textContent = scheduleText || "—";
+                    const scheduleText2 = data.schedules.map(s => `
+                        Section ${s.section}<br>
+                        Enseignant : ${s.teachers.join(", ")}<br>
+                        Horaire :<br>${s.horaire.join("<br>")}<br>
+                        Intra : ${s.intra || "N/A"}<br>
+                        Final : ${s.final || "N/A"}
+                    `).join("<hr>");
+                    document.getElementById("course2Schedule").innerHTML = scheduleText2 || "—";
 
                     // Prérequis
                     const prereqText = data.prerequisite_courses.length > 0 

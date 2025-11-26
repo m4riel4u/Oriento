@@ -6,6 +6,7 @@ import com.diro.ift2255.service.CourseService;
 import com.diro.ift2255.util.ResponseUtil;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -82,15 +83,55 @@ public class CourseController {
 
     }
     public void getCompleteCourse(Context ctx) {
-        String id = ctx.pathParam("id").trim().toUpperCase();
+    String id = ctx.pathParam("id").trim().toUpperCase();
 
-        service.getCompleteCourse(id).ifPresentOrElse(
-            course -> {
-                ctx.json(course);
-            },
-            () -> {               
-                ctx.status(404).json(Map.of("error", "Cours introuvable"));
-            }
-        );
-    }
+    service.getCompleteCourse(id).ifPresentOrElse(
+        course -> {
+
+            List<Map<String, Object>> rebuiltSchedules = service.rebuild(course);
+
+            // Créer un Map combiné pour le front-end
+            Map<String, Object> response = new LinkedHashMap<>();
+            response.put("id", course.getId());
+            response.put("name", course.getName());
+            response.put("description", course.getDescription());
+            response.put("credits", course.getCredits());
+            response.put("schedules", rebuiltSchedules);
+            response.put("prerequisite_courses", course.getPrerequisite_courses());
+            response.put("equivalent_courses", course.getEquivalent_courses());
+            response.put("concomitant_courses", course.getConcomitant_courses());
+            Map<String, Boolean> termsFR = new LinkedHashMap<>();
+            course.getAvailable_terms().forEach((key, value) -> {
+                String keyFR;
+                switch (key.toLowerCase()) {
+                    case "autumn": keyFR = "Automne"; break;
+                    case "winter": keyFR = "Hiver"; break;
+                    case "summer": keyFR = "Ete"; break;
+                    default: keyFR = key;
+                }
+                termsFR.put(keyFR, value);
+            });
+            response.put("available_terms", termsFR);
+            Map<String, Boolean> periodsFR = new LinkedHashMap<>();
+            course.getAvailable_periods().forEach((key, value) -> {
+                String keyFR;
+                switch (key.toLowerCase()) {
+                    case "daytime": keyFR = "Jour"; break;
+                    case "evening": keyFR = "Soir"; break;
+                    default: keyFR = key;
+                }
+                periodsFR.put(keyFR, value);
+            });
+            response.put("available_periods", periodsFR);
+
+            
+            ctx.json(response);
+        },
+        () -> {
+
+            ctx.status(404).json(Map.of("error", "Cours introuvable"));
+        }
+    );
+}
+
 }

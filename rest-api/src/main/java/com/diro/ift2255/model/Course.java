@@ -26,7 +26,6 @@ public class Course {
     private List<String> concomitant_courses;
 
 
-
     public Course(String id, String name, String desc, Map<String, Boolean> peri,
         String req, double cred, List<Schedule> sche, 
         List<String> pre, Map<String, Boolean> terms, List<String> equi, List<String> conco) {

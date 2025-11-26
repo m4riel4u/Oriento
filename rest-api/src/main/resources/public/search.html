@@ -59,8 +59,18 @@
                             <strong>Description :</strong> ${cours.description}<br>
                             <strong>Crédits :</strong> ${cours.credits}<br>
                             <strong>Horaire :</strong><br>
-                            ${cours.schedules?.map(s => `${s.day} ${s.start_time}-${s.end_time} 
-                            (${s.room})`).join("<br>") || "Aucun horaire disponible"}<br>
+                            ${cours.schedules.map(s => `
+                                <div>
+                                    <strong>Section :</strong> ${s.section}<br>
+                                    <strong>Semestre:</strong> ${s.semester}<br>
+                                    <strong>Enseignant :</strong> ${s.teachers.join(", ")}<br>
+                                    <strong>Horaire :</strong><br>
+                                    ${s.horaire.join("<br>")}<br>
+                                    <strong>Intra :</strong> ${s.intra || "N/A"}<br>
+                                    <strong>Final :</strong> ${s.final || "N/A"}<br>
+                                </div>
+                            `).join("<hr>") || "Aucun horaire disponible"}
+                            <br>
                             <strong>Prérequis :</strong> ${cours.prerequisite_courses?.join(", ") || "Aucun"}<br>
                             <strong>Trimestre offert :</strong> 
                             ${Object.keys(cours.available_terms)
