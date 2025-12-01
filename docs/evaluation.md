@@ -46,7 +46,7 @@ title: Évaluation et tests
 | testGetCourseById | courseId = "IFT2255" | {id:"IFT2255", name:"Génie logiciel"} | Voir les détails d’un cours | N/A | Succès | Vérifie que la méthode retourne correctement un cours lorsque l’ID est valide. |
 | testSearchCourses_filtreParIdOuNom (ID) | query = "IFT2255" | Liste contenant uniquement "IFT2255" | Recherche de cours | N/A | Succès | Vérifie que la recherche par ID retourne uniquement le cours correspondant. |
 | testSearchCourses_filtreParIdOuNom (nom partiel) | query = "intro" | Liste contenant "IFT1025" | Recherche de cours | N/A | Succès | Vérifie que la recherche par nom partiel (insensible à la casse) retourne le bon cours. |
-| testSearchCourses_requeteVideRetourneTousLesCours | query = "" | Les 2 cours retournés | Recherche de cours | N/A | Succès | Vérifie que lorsqu’une requête vide est fournie, tous les cours sont retournés. |
+| testSearchCourses_champVide | query = "" | Les 2 cours retournés | Recherche de cours | N/A | Succès | Vérifie que lorsqu’une requête vide est fournie, tous les cours sont retournés. |
 
 
 ## Évaluation du système
