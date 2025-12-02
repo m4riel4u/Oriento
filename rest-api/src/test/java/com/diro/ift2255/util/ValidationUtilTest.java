@@ -16,10 +16,10 @@ public class ValidationUtilTest {
 
     @Test
     void testIsEmail() {
-        assertTrue(ValidationUtil.isValidEmail("abc@mail.com"), "Email standard valide");
-        assertFalse(ValidationUtil.isValidEmail("abc"), "Email sans @ non valide");
-        assertFalse(ValidationUtil.isValidEmail(""), "Chaîne vide non valide");
-        assertFalse(ValidationUtil.isValidEmail(null), "Valeur null non valide");
+        assertTrue(ValidationUtil.isEmail("abc@mail.com"), "Email standard valide");
+        assertFalse(ValidationUtil.isEmail("abc"), "Email sans @ non valide");
+        assertFalse(ValidationUtil.isEmail(""), "Chaîne vide non valide");
+        assertFalse(ValidationUtil.isEmail(null), "Valeur null non valide");
     }
     
 }
