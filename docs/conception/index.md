@@ -13,6 +13,7 @@ Cette section présente les grandes lignes de l’architecture et des choix de c
     - Présentation (UI)
     - Logique métier
     - Base de données
+- Cet approche permet de séparer clairement les responsabilités: la gestion des données, la logique applicative et l'interface utilisateur sont découplées, ce qui facilitera la maintenance, les évolutions futures et les tests unitaires des différentes composantes. Ayant chaque couche (Modèle-Vue-Contrôleur) indépendant avec son rôle clair et unique, le modèle MVC permet de réduire le couplage et d'améliorer la cohérence.
 
 ## Contraintes prises en compte
 
