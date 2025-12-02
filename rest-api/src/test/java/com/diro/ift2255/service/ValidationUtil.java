@@ -23,7 +23,7 @@ public class ValidationUtilTest {
     }
 
     @Test
-    testIsValidEmailEdgeCases() {
+    void testIsValidEmailEdgeCases() {
         assertTrue(ValidationUtil.isValidEmail("abc@mail.domain.com"), "Sous-domaine valide");
         assertFalse(ValidationUtil.isValidEmail("abc @mail.com"), "Email avec espace non valide");
         assertFalse(ValidationUtil.isValidEmail("abc@@mail.com"), "Email avec double @ non valide");
