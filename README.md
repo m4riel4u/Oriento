@@ -55,4 +55,7 @@ Prérequis :
 ## Tester l'application
 
 - Tests effectués dans le répertoire src/test/
-  > mvn test?
+  > mvn compile
+  > run main
+  > mvn test
+
