@@ -133,5 +133,12 @@ public class CourseController {
         }
     );
 }
+    public void getCoursesByProgram (Context ctx){
+        System.out.println(">>> getCoursesByProgram CALLED");
+        String program = ctx.pathParam("program");
+        System.out.println(">>> program reçu = [" + program + "]");
+        List<Course> results = service.getCourseByProgram(program);
+        ctx.json(results);
 
+    }
 }
