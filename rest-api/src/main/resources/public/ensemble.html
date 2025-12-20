@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un ensemble de cours</title>
+    <style>
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #aaa;
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .course-box {
+            margin: 5px 0;
+            padding: 5px;
+            background: #f2f2f2;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Créer un ensemble de cours</h1>
+    <a href="index.html">Retour au menu principal</a>
+
+    <h2>Ajouter des cours (max 6)</h2>
+    <input type="text" id="courseInput" placeholder="IFT2255">
+    <button onclick="addCourse()">Ajouter</button>
+    <button onclick="clearAllCourses()">Réinitialiser</button>
+
+    <h3>Liste de cours choisis :</h3>
+    <p id="selectedCourses">—</p>
+
+    <h2>Trimestre</h2>
+    <input type="text" id="semester" placeholder="H25">
+
+    <br><br>
+    <button onclick="buildSchedule()">Voir l'horaire</button>
+
+    <h2>Horaire</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Lundi</th>
+                <th>Mardi</th>
+                <th>Mercredi</th>
+                <th>Jeudi</th>
+                <th>Vendredi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="scheduleRow">
+                <td id="Mon"></td>
+                <td id="Tue"></td>
+                <td id="Wed"></td>
+                <td id="Thu"></td>
+                <td id="Fri"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="ensemble.js"></script>
+</body>
+</html>
