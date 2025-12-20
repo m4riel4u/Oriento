@@ -2,6 +2,7 @@ package com.diro.ift2255.controller;
 
 import io.javalin.http.Context;
 import com.diro.ift2255.model.Course;
+import com.diro.ift2255.model.EligibilityResult;
 import com.diro.ift2255.service.CourseService;
 import com.diro.ift2255.util.ResponseUtil;
 
@@ -178,6 +179,22 @@ public class CourseController {
         ctx.json(courses);
     }
 }
+    public void checkEligibility(Context ctx) {
+        System.out.println(">>> checkEligibility CALLED");
+
+        Map<String, Object> body = ctx.bodyAsClass(Map.class);
+
+        List<String> completedCourses = (List<String>) body.get("completedCourses");
+        String targetCourse = (String) body.get("targetCourse");
+
+        System.out.println("Cours complétés : " + completedCourses);
+        System.out.println("Cours cible : " + targetCourse);
+
+        EligibilityResult result = service.checkEligibility(completedCourses, targetCourse);
+
+        ctx.json(result);
+    }
+
 
 
 

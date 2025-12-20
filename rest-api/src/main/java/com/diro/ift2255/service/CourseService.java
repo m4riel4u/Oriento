@@ -2,6 +2,7 @@ package com.diro.ift2255.service;
 
 import com.diro.ift2255.model.Course;
 import com.diro.ift2255.model.Schedule;
+import com.diro.ift2255.model.EligibilityResult;
 import com.diro.ift2255.util.HttpClientApi;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -266,6 +267,30 @@ System.out.println(">>> Total sigles retenus = " + siglesList.size());
             throw new IllegalArgumentException("Semester invalide: " + semester);
     }
 }
-  
+    public EligibilityResult checkEligibility(List<String> completed, String target) {
+
+        System.out.println(">>> checkEligibility SERVICE");
+        System.out.println("Target : " + target);
+
+        Optional<Course> courseOpt = getCourseById(target, null);
+
+        if (courseOpt.isEmpty()) {
+            return new EligibilityResult(false, List.of("Cours introuvable"));
+        }
+
+        Course course = courseOpt.get();
+        List<String> prerequisites = course.getPrerequisite_courses();
+
+        if (prerequisites == null || prerequisites.isEmpty()) {
+            return new EligibilityResult(true, List.of());
+        }
+
+        List<String> missing = prerequisites.stream()
+                .filter(pr -> !completed.contains(pr))
+                .toList();
+
+        return new EligibilityResult(missing.isEmpty(), missing);
+    }
+
 
 }

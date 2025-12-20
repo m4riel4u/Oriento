@@ -29,11 +29,13 @@
 </head>
 <body>
     <h1> Comparer 2 cours</h1> 
+    <a class=button href="index.html"> Retour au menu principal</a>
     <h2>Cours #1</h2>
     <input type="text" id="courseId1" placeholder="Ex: IFT2255">
     <h2>Cours #2</h2>
     <input type="text" id="courseId2" placeholder="Ex: IFT2255">
     <button onclick="compareCourses()">Comparer</button>
+    
     <!-- Tableau de comparaison ---> 
     <table class="compare-table">
     <thead>
@@ -93,7 +95,7 @@
     </table>
 
 
-    <a class=button href="index.html"> Retour au menu principal</a>
+    
     <script>
         function compareCourses() {
             const id1 = document.getElementById("courseId1").value.trim();
