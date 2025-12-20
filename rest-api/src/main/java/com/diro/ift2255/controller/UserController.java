@@ -74,7 +74,12 @@ public class UserController {
      */
     public void deleteUser(Context ctx) {
         int id = Integer.parseInt(ctx.pathParam("id"));
-        service.deleteUser(id);
-        ctx.status(204);
+        boolean removed = service.deleteUser(id);
+
+        if (removed) {
+            ctx.status(204);
+        } else {
+            ctx.status(404).json("Aucun utilisateur avec cet ID.");
+        }
     }
 }

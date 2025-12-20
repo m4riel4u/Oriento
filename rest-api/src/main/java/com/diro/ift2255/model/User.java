@@ -7,6 +7,7 @@ public class User {
     private int id;
     private String name;
     private String email;
+    private String cycle; 
 
     public User() {}
 
@@ -14,6 +15,7 @@ public class User {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.cycle = cycle;
     }
 
     public int getId() { return id; }
@@ -24,4 +26,8 @@ public class User {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public String getCycle(){return cycle;}
+    public void setCycle(String cycle){this.cycle = cycle;}
 }
+

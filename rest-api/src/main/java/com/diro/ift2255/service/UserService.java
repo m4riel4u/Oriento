@@ -1,48 +1,87 @@
 package com.diro.ift2255.service;
 
 import com.diro.ift2255.model.User;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
 import java.util.*;
 
 public class UserService {
-    private final Map<Integer, User> users = new HashMap<>();
-    private int nextId = 1;
+
+    private static final String FILE_PATH = "users.json";
+
+    private final ObjectMapper mapper = new ObjectMapper();
+    private final List<User> users;
+    private int nextId;
 
     public UserService() {
-        // Mock users
-        users.put(nextId, new User(nextId++, "Alice", "alice@example.com"));
-        users.put(nextId, new User(nextId++, "Bob", "bob@example.com"));
+        users = loadUsersFromFile();
+        nextId = users.stream()
+                .mapToInt(User::getId)
+                .max()
+                .orElse(0) + 1;
     }
 
-    /** Fetch all users */
+    /* ======================
+       Méthodes publiques
+       ====================== */
+
     public List<User> getAllUsers() {
-        return new ArrayList<>(users.values());
+        return users;
+    }
+
+    public Optional<User> getUserById(int id) {
+        return users.stream()
+                .filter(u -> u.getId() == id)
+                .findFirst();
+    }
+
+    public void createUser(User user) {
+        user.setId(nextId++);
+        users.add(user);
+        saveUsersToFile();
+    }
+
+    public void updateUser(int id, User updated) {
+        deleteUser(id);
+        updated.setId(id);
+        users.add(updated);
+        saveUsersToFile();
+    }
+
+    public boolean deleteUser(int id) {
+        boolean removed = users.removeIf(u -> u.getId() == id);
+        if (removed) {
+            saveUsersToFile();
+        }
+        return removed;
     }
 
 
-    /** Fetch a user by ID */
-    public Optional<User> getUserById(int id) {
+    /* ======================
+       Persistance fichier
+       ====================== */
+
+    private List<User> loadUsersFromFile() {
         try {
-            User user = users.get(id);
-            return Optional.of(user);
+            File file = new File(FILE_PATH);
+            if (!file.exists()) {
+                return new ArrayList<>();
+            }
+            return mapper.readValue(file, new TypeReference<List<User>>() {});
         } catch (Exception e) {
-            return Optional.empty();
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 
-    /** Create (add) a user */
-    public void createUser(User user) {
-        user.setId(nextId++);
-        users.put(user.getId(), user);
-    }
-
-    /** Update a user */
-    public void updateUser(int id, User updated) {
-        updated.setId(id);
-        users.put(id, updated);
-    }
-
-    /** Delete a user */
-    public void deleteUser(int id) {
-        users.remove(id);
+    private void saveUsersToFile() {
+        try {
+            mapper.writerWithDefaultPrettyPrinter()
+                  .writeValue(new File(FILE_PATH), users);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
