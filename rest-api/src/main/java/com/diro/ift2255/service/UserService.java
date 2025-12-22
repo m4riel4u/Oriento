@@ -9,7 +9,7 @@ import java.util.*;
 
 public class UserService {
 
-    private static final String FILE_PATH = "users.json";
+    private static final String FILE_PATH = "../users.json";
 
     private final ObjectMapper mapper = new ObjectMapper();
     private final List<User> users;
