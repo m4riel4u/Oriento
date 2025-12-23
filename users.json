@@ -1,1 +1,7 @@
-[ ]
+[ {
+  "id" : 1,
+  "name" : "marie",
+  "email" : "marie@exemple.com",
+  "cycle" : "Baccalaureat",
+  "completedCourses" : [ "IFT1025" ]
+} ]

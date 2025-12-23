@@ -182,7 +182,7 @@ public class CourseController {
             return "N/A";
         }
 
-        if (num >= 1000 && num <= 3999) return "Baccalauréat";
+        if (num >= 1000 && num <= 3999) return "Baccalaureat";
         if (num >= 6000 && num <= 6999) return "Maîtrise";
         if ((num >= 7000 && num <= 9999) || num == 0) return "Doctorat";
 
