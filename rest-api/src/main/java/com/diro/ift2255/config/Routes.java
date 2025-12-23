@@ -37,12 +37,19 @@ public class Routes {
     private static void registerUserRoutes(Javalin app) {
         UserService userService = new UserService();
         UserController userController = new UserController(userService);
+        CourseService courseService = new CourseService(new HttpClientApi());
+        CourseController courseController = new CourseController(courseService);
+
 
         app.get("/users", userController::getAllUsers);
         app.get("/users/{id}", userController::getUserById);
         app.post("/users", userController::createUser);
         app.put("/users/{id}", userController::updateUser);
         app.delete("/users/{id}", userController::deleteUser);
+        app.post("/eligibility/user/{userId}/course/{courseId}",courseController::checkEligibilityForUser);
+
+
+
     }
 
     /**
@@ -61,7 +68,7 @@ public class Routes {
         app.get("/courses/{id}", courseController::getCourseById);
         app.get("/courses/complete/{id}", courseController::getCompleteCourse);
         app.get("/courses/program/{program}", courseController::getCoursesByProgram);
-        
+        app.get("/courses/program/{program}/schedule", courseController::getCoursesByProgramWithSchedule);
     }
 
     /**
